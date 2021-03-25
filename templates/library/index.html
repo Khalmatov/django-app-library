@@ -1,0 +1,21 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<main class="welcome px-3 text-center text-white bg-dark h-100 py-5">
+	<h1>Добро пожаловать в мою библиотеку!</h1>
+	<p class="lead">Для вас я собрал книги, которые я прочел, читаю или собираюсь читать</p>
+	{# <p class="lead"> #}
+		{# <a href="{% url 'book-list' %}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Открыть сокровище</a> #}
+	{# </p> #}
+	<a class="hotbutton mt-4 fs-2" href="{% url 'book-list' %}">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		Открыть сокровище
+	</a>
+</main>
+
+{% endblock content %}

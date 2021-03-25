@@ -1,0 +1,23 @@
+{% extends "library/base.html" %}
+{% block title %}Все авторы{% endblock title %}
+
+{% block content %}
+
+<main class='mt-2'>
+	<div class="container marketing">
+		<!-- Three columns of text below the carousel -->
+		<div class="row justify-content-around">
+			{% for author in authors %}
+			<div class="col-lg-3 col-md-4 m-3 pt-2 border border-info">
+				<div class="photo">
+					<a href="{{author.get_absolute_url}}"><img src="{{author.photo.url}}" alt="Фото автора" class="photo w-75"></a>
+				</div>
+				<h2><a href="{{author.get_absolute_url}}">{{author.name}}</a></h2>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</main>
+
+
+{% endblock content %}

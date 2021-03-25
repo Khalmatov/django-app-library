@@ -1,0 +1,54 @@
+{% extends "library/base.html" %}
+{% block title %}{{ book.name }}{% endblock title %}
+
+{% block content %}
+
+<img src="{{book.cover.url}}" alt="Обложка" class="img-fluid">
+<div class="card mt-0 pt-0">
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<b>Авторы:</b>
+				{% for author in book.authors.all %}
+				<a href="{{author.get_absolute_url}}">{{author.name}}</a>
+			{% endfor %}</li>
+	</ul>
+	<div class="card-body">
+		<h5 class="card-title">{{book.name}}</h5>
+		<p class="card-text">{{ book.description }}</p>
+	</div>
+</div>
+
+
+
+{% comment %}
+	
+<h2>
+	{% for author in book.authors.all %}{{author.name}}{% endfor %} - "{{book.name}}"
+</h2>
+
+<p>
+	<b>Название книги:</b>
+	{{book.name}}
+</p>
+<p>
+	<b>Авторы:</b>
+	{% for author in book.authors.all %}
+	<a href="{{author.get_absolute_url}}">{{author.name}}</a>
+	{% endfor %}
+</p>
+<p>
+	<b>Год издания:</b>
+	{{book.year_of_release}}
+</p>
+<p>
+	<b>Краткое описание:</b>
+	{{book.description}}
+</p>
+<p>
+	<b>Обложка:</b>
+	<img src="{{book.cover.url}}" alt="Обложка недоступна" height="150">
+</p>
+{% endcomment %}
+
+{% endblock content %}
+

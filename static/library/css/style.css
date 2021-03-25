@@ -1,0 +1,134 @@
+/*
+ * Globals
+ */
+body{
+	color: #5a5a5a;
+  display: flex;
+}
+
+a{
+  text-decoration: none;
+  color: #5a5a5a;
+}
+/* Горящая кнопка */
+a.hotbutton{
+  font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #CEFF92;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 22px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+a.hotbutton:hover{
+  color: #39561f;
+  background: #f5e882;
+  box-shadow: 0 0 10px #ceff92, 0 0 40px #ceff92, 0 0 90px #ceff92;
+  transition-delay: 1s; 
+}
+a.hotbutton span{
+  position: absolute;
+  display: block;
+}
+a.hotbutton span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffa131);
+}
+a.hotbutton:hover span:nth-child(1){
+  left: 100%;
+  transition: 0.8s;
+}
+a.hotbutton span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(270deg, transparent, #95ff49);
+}
+a.hotbutton:hover span:nth-child(3){
+  right: 100%;
+  transition: 0.8s;
+  transition-delay: 0.5s;
+}
+a.hotbutton span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ff6531);
+}
+a.hotbutton:hover span:nth-child(2){
+  top: 100%;
+  transition: 0.8s;
+  transition-delay: 0.25s;
+}
+a.hotbutton span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #ceff92);
+}
+a.hotbutton:hover span:nth-child(4){
+  bottom: 100%;
+  transition: 0.8s;
+  transition-delay: 0.75s;
+}
+
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+    transition: 0.5s; /* Время эффекта */
+}
+.btn-secondary:hover{
+  color: #333;
+  box-shadow: 0px 0px 5px 8px #eeff41;
+  transform: scale(1.05); /* Увеличиваем масштаб */
+
+}
+
+/*
+ * Base structure
+ */
+
+.welcome {
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+/* Center align the text within the three columns below the carousel */
+
+.marketing .col-lg-3, .marketing .col-md-4 {
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+
+/* Обложка книги */
+.cover{
+    min-height: 245px;
+}
+.cover img {
+    transition: 0.5s; /* Время эффекта */
+    box-shadow: 0px 0px 15px 2px #000;
+
+   }
+.cover img:hover {
+    box-shadow: 0px 0px 15px 5px #000;
+    transform: scale(1.1); /* Увеличиваем масштаб */
+   }

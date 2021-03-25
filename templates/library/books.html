@@ -1,0 +1,29 @@
+{% extends "library/base.html" %}
+{% load static %}
+{% block title %}Все книги{% endblock title %}
+
+{% block content %}
+
+<main class='mt-2'>
+	<div class="container marketing">
+		<!-- Three columns of text below the carousel -->
+		<div class="row justify-content-around">
+			{% for book in books %}
+			<div class="col-lg-3 col-md-4 m-3 pt-2 border border-info">
+				<div class="cover">
+					<a href="{{book.get_absolute_url}}"><img src="{{book.cover.url}}" alt="Обложка книги" class="w-75"></a>
+				</div>
+				<h2><a href="{{book.get_absolute_url}}">{{book.name}}</a></h2>
+				{% for author in book.authors.all %}
+				<h4 class="text-muted"><a href="{{author.get_absolute_url}}">{{author.name}}</a></h4>
+				{% endfor %}
+				<p>{{book.description|truncatewords:20}}</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</main>
+
+{% include "library/inc/_paginator.html" %}
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "library/base.html" %}
+{% load static %}
+{% block title %}Поиск книг{% endblock title %}
+
+{% block content %}
+
+<main class='mt-2'>
+	<div class="container marketing">
+		{% if books %}
+		<h3>По запросу &#171;<b>{{search_query}}</b>&#187; нашлось <b>{{books.count}}</b> книг(и)</h3>
+		<!-- Three columns of text below the carousel -->
+		<div class="row justify-content-around">
+			{% for book in books %}
+			<div class="col-lg-3 col-md-4 m-3 pt-2 border border-info">
+				<div class="cover">
+					<a href="{{book.get_absolute_url}}"><img src="{{book.cover.url}}" alt="Обложка книги" class="cover w-75"></a>
+				</div>
+				<h2><a href="{{book.get_absolute_url}}">{{book.name}}</a></h2>
+				{% for author in book.authors.all %}
+				<h4 class="text-muted"><a href="{{author.get_absolute_url}}">{{author.name}}</a></h4>
+				{% endfor %}
+				<p>{{book.description|truncatewords:20}}</p>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<h4>К сожалению, я ничего не смог найти по запросу &#171;<b>{{search_query}}</b>&#187; :&#40;</h4>
+		{% endif %}
+	</div>
+</main>
+
+{% include "library/inc/_paginator.html" %}
+
+{% endblock content %}
