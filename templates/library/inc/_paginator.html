@@ -1,24 +1,45 @@
-<center>
-	
 {% if is_paginated %}
 {% if page_obj.has_other_pages %}
 
-{% if page_obj.has_previous %}
-	<span><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&lt;</a></span>
-{% endif %}
+<nav aria-label="Page navigation example">
 
-	{% for p in paginator.page_range %}
-	{% if page_obj.number == p %}
-		<span>{{ p }}</span>
-	{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:+2 %}
-		<span><a href="?page={{ p }}">{{ p }}</a></span>
+	<ul class="pagination justify-content-center my-2">
+
+		{% if page_obj.has_previous %}
+		<li class="page-item">
+			<a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		{% endif %}
+
+		{% for p in paginator.page_range %}
+
+		{% if page_obj.number == p %}
+		<li class="page-item active" aria-current="page">
+			<span class="page-link">{{ p }}</span>
+		</li>
+
+		{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:+2 %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ p }}">{{ p }}</a>
+		</li>
+		{% endif %}
+
+		{% endfor %}
+
+		{% if page_obj.has_next %}
+		<li class="page-item">
+			<a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+
 	{% endif %}
-	{% endfor %}
 
-{% if page_obj.has_next %}
-	<span><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">&gt;</a></span>
+	{% endif %}
+
+</nav>
 {% endif %}
 
-{% endif %}
-{% endif %}
-</center>

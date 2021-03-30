@@ -92,7 +92,7 @@ class BookList(DataMixin, ListView):
 	"""
 	Вывод списка книг
 	"""
-	paginate_by = 10
+	paginate_by = 9
 	model = Book
 	context_object_name = 'books'
 	template_name = 'library/books.html'
